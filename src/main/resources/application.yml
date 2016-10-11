@@ -23,3 +23,12 @@ spring:
             naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
             properties:
                 hibernate.dialect: org.hibernate.dialect.MySQL5Dialect
+
+# Incar common modules api
+service:
+    ip: {ip}
+    port: {port}
+    api:
+        user:
+            account:
+                findById: /service/account/{id}

@@ -26,9 +26,8 @@ public class AccountController extends BaseController {
      * @return 账户信息
      */
     @RequestMapping(value="/account/{id}",method = RequestMethod.GET)
-    public ObjectResult findAccountById(@PathVariable("id") int id)
+    public String findAccountById(@PathVariable("id") int id)
     {
-        AccountShow accountShow = accountService.findById(id);
-        return new ObjectResult("true",accountShow);
+        return accountService.findById(id);
     }
 }

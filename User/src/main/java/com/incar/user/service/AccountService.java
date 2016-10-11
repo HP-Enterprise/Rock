@@ -1,6 +1,8 @@
 package com.incar.user.service;
 
-import com.incar.user.vo.AccountShow;
+import com.incar.common.CommonUserUtil;
+import com.incar.common.HttpRequestUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -9,13 +11,20 @@ import org.springframework.stereotype.Service;
 @Service
 public class AccountService implements IAccountService {
 
+    @Autowired
+    CommonUserUtil commonUserUtil;
+
     /**
      * 通过ID查询账户信息
      * @param id 账户ID
      * @return 账户信息
      */
     @Override
-    public AccountShow findById(int id) {
-        return null;
+    public String findById(int id)
+    {
+        String URL = commonUserUtil.findById();
+        String realURL = URL.replace("{id}",String.valueOf(id));
+        String requestResult = HttpRequestUtil.getRequest(realURL);
+        return requestResult;
     }
 }
